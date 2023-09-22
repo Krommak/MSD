@@ -11,10 +11,27 @@ namespace Game.Start
         private Installer _battleInstaller;
         [SerializeField]
         private Installer _playerInstaller;
+        [SerializeField]
+        private List<Transform> _playerPositions;
 
         private Dictionary<int, Installer> _gameInstallers;
 
         private int _playerCount = 2;
+        private RuntimeData _runtimeData;
+
+        public RuntimeData RuntimeData
+        {
+            get 
+            { 
+                if(_runtimeData == null)
+                    _runtimeData = new RuntimeData(_playerPositions);
+
+                return _runtimeData; 
+            }
+            private set 
+            { 
+            }
+        }
 
         private void Start()
         {
@@ -36,6 +53,24 @@ namespace Game.Start
             {
                 item.enabled = true;
             }
+        }
+    }
+
+    public class RuntimeData
+    {
+        private List<Transform> _playerPositions;
+        private int actualPosition;
+
+        public RuntimeData(List<Transform> positions)
+        {
+            _playerPositions = positions;
+        }
+
+        public Transform GetPosForCreatePlayerBase()
+        {
+            var result = _playerPositions[actualPosition];
+            actualPosition++;
+            return result;
         }
     }
 }
