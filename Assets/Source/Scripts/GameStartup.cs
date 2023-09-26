@@ -1,5 +1,7 @@
+using Game.Scriptables.Installers;
 using Scellecs.Morpeh;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Start
@@ -8,9 +10,12 @@ namespace Game.Start
     {
         public static GameStartup Instance { get; private set; }
         [SerializeField]
-        private Installer _battleInstaller;
+        private Installer _installerGO;
         [SerializeField]
-        private Installer _playerInstaller;
+        private ScriptableInstaller _playerInstaller;
+        [SerializeField]
+        private ScriptableInstaller _battleInstaller;
+
         [SerializeField]
         private List<Transform> _playerPositions;
 
@@ -38,20 +43,33 @@ namespace Game.Start
             Instance = this;
 
             _gameInstallers = new Dictionary<int, Installer>();
-            var battleInstaller = GameObject.Instantiate(_battleInstaller).GetComponent<Installer>();
+            var battleInstaller = GameObject.Instantiate(_installerGO).GetComponent<Installer>();
             _gameInstallers.Add(0, battleInstaller);
+            battleInstaller.World = World.Create("BattleWorld");
+            _battleInstaller.FillSystems(battleInstaller.World);
             battleInstaller.order = 0;
 
             for (int i = 1; i <= _playerCount; i++)
             {
-                var installer = GameObject.Instantiate(_playerInstaller).GetComponent<Installer>();
+                var installer = GameObject.Instantiate(_installerGO).GetComponent<Installer>();
                 installer.order = i;
+                installer.World = World.Create($"Player {i}");
+                _playerInstaller.FillSystems(installer.World);
                 _gameInstallers.Add(i, installer);
             }
 
             foreach (var item in _gameInstallers.Values)
             {
                 item.enabled = true;
+            }
+        }
+
+        private void OnDisable()
+        {
+            foreach (var item in _gameInstallers.Values)
+            {
+                _playerInstaller.RemoveSystems(item.World);
+                _battleInstaller.RemoveSystems(item.World);
             }
         }
     }

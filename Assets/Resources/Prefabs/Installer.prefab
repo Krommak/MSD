@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3697986381868860476}
   - component: {fileID: -8028430653121007851}
   m_Layer: 0
-  m_Name: BattleInstaller
+  m_Name: Installer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

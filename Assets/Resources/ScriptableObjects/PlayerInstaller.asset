@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9f2a2d9810a9b41ac423e187e5db5a, type: 3}
-  m_Name: SCreatePlayerSystem
+  m_Script: {fileID: 11500000, guid: dd8db12a2c337d34bbab6f5361989d81, type: 3}
+  m_Name: PlayerInstaller
   m_EditorClassIdentifier: 
-  _relativeSquadPositions: []
+  order: 0
+  initializers:
+  - {fileID: 11400000, guid: 2313438f2375e4746a1c2244d5a82793, type: 2}
+  updateSystems: []
+  fixedUpdateSystems: []
+  lateUpdateSystems: []
+  cleanupSystems: []
