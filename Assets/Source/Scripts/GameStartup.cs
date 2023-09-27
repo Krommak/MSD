@@ -1,7 +1,6 @@
 using Game.Scriptables.Installers;
 using Scellecs.Morpeh;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Start
@@ -26,15 +25,15 @@ namespace Game.Start
 
         public RuntimeData RuntimeData
         {
-            get 
-            { 
-                if(_runtimeData == null)
+            get
+            {
+                if (_runtimeData == null)
                     _runtimeData = new RuntimeData(_playerPositions);
 
-                return _runtimeData; 
+                return _runtimeData;
             }
-            private set 
-            { 
+            private set
+            {
             }
         }
 
@@ -46,21 +45,45 @@ namespace Game.Start
             var battleInstaller = GameObject.Instantiate(_installerGO).GetComponent<Installer>();
             _gameInstallers.Add(0, battleInstaller);
             battleInstaller.World = World.Create("BattleWorld");
-            _battleInstaller.FillSystems(battleInstaller.World);
+            _battleInstaller.FillSystems(0, battleInstaller.World);
             battleInstaller.order = 0;
 
             for (int i = 1; i <= _playerCount; i++)
             {
                 var installer = GameObject.Instantiate(_installerGO).GetComponent<Installer>();
                 installer.order = i;
-                installer.World = World.Create($"Player {i}");
-                _playerInstaller.FillSystems(installer.World);
-                _gameInstallers.Add(i, installer);
+                installer.World = World.Create($"Player {i + 1}");
+                _playerInstaller.FillSystems(i, installer.World);
+                _gameInstallers.Add(i + 1, installer);
+                installer.enabled = true;
             }
+        }
 
+        private void Update()
+        {
             foreach (var item in _gameInstallers.Values)
             {
-                item.enabled = true;
+                item.World.Update(Time.deltaTime);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            foreach (var item in _gameInstallers.Values)
+            {
+                item.World.FixedUpdate(Time.fixedDeltaTime);
+            }
+        }
+
+        private void LateUpdate()
+        {
+            foreach (var item in _gameInstallers.Values)
+            {
+                item.World.LateUpdate(Time.deltaTime);
+            }
+            foreach (var item in _gameInstallers.Values)
+            {
+                item.World.CleanupUpdate(Time.deltaTime);
             }
         }
 

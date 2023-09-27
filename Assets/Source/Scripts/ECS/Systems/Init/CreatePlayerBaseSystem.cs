@@ -4,8 +4,7 @@ using Unity.IL2CPP.CompilerServices;
 using Game.Start;
 using Scellecs.Morpeh;
 using Game.Components;
-using System.Runtime.CompilerServices;
-using UnityEngine.UIElements;
+using Game.Scriptables.Installers;
 
 namespace Game.Systems.Init
 {
@@ -14,7 +13,7 @@ namespace Game.Systems.Init
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
     [CreateAssetMenu(menuName = "ECS/Initializers/" + nameof(CreatePlayerBaseSystem))]
 
-    public sealed class CreatePlayerBaseSystem : Initializer
+    public sealed class CreatePlayerBaseSystem : Initializer, ICopiableInitializer<Initializer>
     {
         [SerializeField]
         private Vector3[] _relativeSquadPositions; 
@@ -26,7 +25,7 @@ namespace Game.Systems.Init
             var player = Instantiate(prefab);
             player.transform.position = posTransform.position;
             player.transform.eulerAngles = posTransform.eulerAngles;
-            
+
             var positionsEntity = this.World.CreateEntity();
             var value = new Vector3[_relativeSquadPositions.Length];
             for (int i = 0; i < value.Length; i++)
@@ -37,12 +36,18 @@ namespace Game.Systems.Init
             {
                 Value = value,
             });
-
-            Debug.Log(this.World.GetFriendlyName() + " " + positionsEntity.ID);
         }
 
         public override void Dispose()
         {
+        }
+
+        public Initializer GetCopy()
+        {
+            return new CreatePlayerBaseSystem()
+            {
+                _relativeSquadPositions = this._relativeSquadPositions
+            };
         }
     }
 }

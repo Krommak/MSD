@@ -1,6 +1,7 @@
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using Scellecs.Morpeh.Utils;
+using System.Collections.Generic;
 using TriInspector;
 using UnityEngine;
 
@@ -8,9 +9,6 @@ namespace Game.Scriptables.Installers
 {
     public abstract class ScriptableInstaller : ScriptableObject
     {
-        [HideInInspector]
-        public int order;
-        
         [Space]
 #if UNITY_EDITOR
         [PropertyOrder(-6)]
@@ -35,44 +33,54 @@ namespace Game.Scriptables.Installers
 #endif
         public CleanupSystemPair[] cleanupSystems;
 
-        private SystemsGroup group;
+        private List<SystemsGroup> groups = new List<SystemsGroup>();
 
-        public void FillSystems(World world = null)
+        public void FillSystems(int order, World world = null)
         {
             if (world == null && World.Default != null)
                 world = World.Default;
 
-            group = world.CreateSystemsGroup();
+            var group = world.CreateSystemsGroup();
 
-            for (int i = 0, length = this.initializers.Length; i < length; i++)
+            groups.Add(group);
+
+            for (int i = 0, length = initializers.Length; i < length; i++)
             {
-                var initializer = this.initializers[i];
-                this.group.AddInitializer(initializer);
+                if(initializers[i] is ICopiableInitializer<Initializer> initializer)
+                    group.AddInitializer(initializer.GetCopy());
             }
 
-            this.AddSystems(this.updateSystems);
-            this.AddSystems(this.fixedUpdateSystems);
-            this.AddSystems(this.lateUpdateSystems);
-            this.AddSystems(this.cleanupSystems);
+            AddSystems(updateSystems, group);
+            AddSystems(fixedUpdateSystems, group);
+            AddSystems(lateUpdateSystems, group);
+            AddSystems(cleanupSystems, group);
 
-            world.AddSystemsGroup(this.order, this.group);
+            world.AddSystemsGroup(order, group);
         }
 
         public void RemoveSystems(World world = null)
         {
+            if (world == null)
+            {
+                world = World.Default;
+            }
+
+            var group = world.CreateSystemsGroup();
+
             if (world != null)
             {
-                this.RemoveSystems(this.updateSystems);
-                this.RemoveSystems(this.fixedUpdateSystems);
-                this.RemoveSystems(this.lateUpdateSystems);
-                this.RemoveSystems(this.cleanupSystems);
+                RemoveSystems(updateSystems, group);
+                RemoveSystems(fixedUpdateSystems, group);
+                RemoveSystems(lateUpdateSystems, group);
+                RemoveSystems(cleanupSystems, group);
 
-                world.RemoveSystemsGroup(this.group);
+                world.RemoveSystemsGroup(group);
             }
-            this.group = null;
+
+            groups.Remove(group);
         }
 
-        private void AddSystems<T>(BasePair<T>[] pairs) where T : class, ISystem
+        private void AddSystems<T>(BasePair<T>[] pairs, SystemsGroup group) where T : class, ISystem
         {
             for (int i = 0, length = pairs.Length; i < length; i++)
             {
@@ -80,11 +88,11 @@ namespace Game.Scriptables.Installers
                 var system = pair.System;
                 if (system != null)
                 {
-                    this.group.AddSystem(system, pair.Enabled);
+                    group.AddSystem(system, pair.Enabled);
                 }
                 else
                 {
-                    this.SystemNullError();
+                    SystemNullError();
                 }
             }
         }
@@ -94,16 +102,26 @@ namespace Game.Scriptables.Installers
             Debug.LogError($"[MORPEH] System null in installer");
         }
 
-        private void RemoveSystems<T>(BasePair<T>[] pairs) where T : class, ISystem
+        private void RemoveSystems<T>(BasePair<T>[] pairs, SystemsGroup group) where T : class, ISystem
         {
             for (int i = 0, length = pairs.Length; i < length; i++)
             {
                 var system = pairs[i].System;
                 if (system != null)
                 {
-                    this.group.RemoveSystem(system);
+                    group.RemoveSystem(system);
                 }
             }
         }
+    }
+
+    public interface ICopiableInitializer<T> where T : class, IInitializer
+    {
+        public abstract T GetCopy();
+    }
+
+    public interface ICopiableSystem<T> where T : class, ISystem
+    {
+        public abstract T GetCopy();
     }
 }
