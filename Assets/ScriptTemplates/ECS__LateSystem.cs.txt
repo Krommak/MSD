@@ -1,6 +1,7 @@
 ﻿using Scellecs.Morpeh.Systems;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
+using Game.Scriptables.Installers;
 
 namespace Game.Systems.LateUpdate
 {
