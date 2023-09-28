@@ -650,6 +650,19 @@ MonoBehaviour:
   _installerGO: {fileID: -8028430653121007851, guid: 6907db0807f1c7640a4724111dc05c50, type: 3}
   _playerInstaller: {fileID: 11400000, guid: 5182834c3d2b4c24883b590b824096dc, type: 2}
   _battleInstaller: {fileID: 11400000, guid: 35da2180f6dd6de4c9ebf0929ebc00ef, type: 2}
+  _players:
+  - Squads:
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+  - Squads:
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
+    - {fileID: 11400000, guid: a37f9961db3fc394ebd905046476db99, type: 2}
   _playerPositions:
   - {fileID: 1435447222}
   - {fileID: 442806711}
