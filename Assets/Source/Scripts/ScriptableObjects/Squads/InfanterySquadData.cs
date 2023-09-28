@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Data.Squads
 {
-    [CreateAssetMenu(fileName = "InfanterySquadData", menuName = "Game/Data/InfanterySquadData")]
+    [CreateAssetMenu(fileName = "InfanterySquadData", menuName = "Game/Data/Units/InfanterySquadData")]
     public class InfanterySquadData : BaseSquadData
     {
         public override Squad GetSquad(World world)

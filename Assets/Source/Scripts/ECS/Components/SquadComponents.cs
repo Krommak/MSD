@@ -3,24 +3,13 @@ using Unity.IL2CPP.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Game.Components.Unit
+namespace Game.Components.Squad
 {
 	[System.Serializable]
 	[Il2CppSetOption(Option.NullChecks, false)]
 	[Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 	[Il2CppSetOption(Option.DivideByZeroChecks, false)]
-	public struct UnitStats: IComponent 
-	{
-		internal int Attack;
-		internal int Armor;
-		internal float MovementSpeed;
-	}
-
-    [System.Serializable]
-    [Il2CppSetOption(Option.NullChecks, false)]
-    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
-    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public struct UnitTransform : IComponent
+	public struct SquadTransform : IComponent 
 	{
 		internal Transform Value;
 	}
@@ -29,8 +18,8 @@ namespace Game.Components.Unit
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public struct UnitNavMesh : IComponent
-    {
+    public struct SquadNavMesh : IComponent
+	{
         internal NavMeshAgent Value;
     }
 }

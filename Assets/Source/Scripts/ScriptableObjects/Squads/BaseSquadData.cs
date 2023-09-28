@@ -1,3 +1,4 @@
+using Game.Components.Squad;
 using Game.Data.Units;
 using Scellecs.Morpeh;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Game.Data.Squads
         private Dictionary<Entity, GameObject> _units;
         private Vector3 _squadSize;
         private World _world;
+        private KeyValuePair<Entity, GameObject> _squad;
 
         public Squad(int count, Unit unit, World world, Vector3 squadSize)
         {
@@ -32,10 +34,17 @@ namespace Game.Data.Squads
             _unit = unit;
             _squadSize = squadSize;
             _world = world;
+            var squadGO = new GameObject(GetType().ToString());
+            var squadEntity = world.CreateEntity();
+            squadEntity.SetComponent(new SquadTransform()
+            {
+                Value = squadGO.transform
+            });
+
             for (int i = 0; i < _unitCount; i++)
             {
                 var entity = world.CreateEntity();
-                var unitGO = _unit.CreateUnit(entity);
+                var unitGO = _unit.CreateUnit(entity, squadGO.transform);
 
                 _units.Add(entity, unitGO);
 

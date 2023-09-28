@@ -35,7 +35,7 @@ namespace Game.Data.Units
             UnitPrefab = unitPrefab;
         }
 
-        public abstract GameObject CreateUnit(Entity entity);
+        public abstract GameObject CreateUnit(Entity entity, Transform parent);
 
         public abstract Unit FillComponents(Entity entity, GameObject unit);
     }

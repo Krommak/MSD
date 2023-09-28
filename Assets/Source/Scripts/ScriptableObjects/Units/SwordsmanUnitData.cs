@@ -1,9 +1,10 @@
-using Game.Components;
+using Game.Components.Unit;
 using Scellecs.Morpeh;
 using UnityEngine;
 
 namespace Game.Data.Units
 {
+    [CreateAssetMenu(fileName = "SwordsmanUnitData", menuName = "Game/Data/Units/SwordsmanUnitData")]
     public class SwordsmanUnitData : BaseUnitData
     {
         public override Unit GetUnit()
@@ -18,9 +19,9 @@ namespace Game.Data.Units
         {
         }
 
-        public override GameObject CreateUnit(Entity entity)
+        public override GameObject CreateUnit(Entity entity, Transform parent)
         {
-            var result = GameObject.Instantiate(UnitPrefab);
+            var result = GameObject.Instantiate(UnitPrefab, parent);
             FillComponents(entity, result);
 
             return result;
@@ -36,7 +37,7 @@ namespace Game.Data.Units
             });
             entity.SetComponent(new UnitTransform()
             {
-                Transform = unit.transform
+                Value = unit.transform
             });
 
             return this;
