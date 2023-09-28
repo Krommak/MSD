@@ -1,17 +1,18 @@
+using Game.Data.Units;
 using Scellecs.Morpeh;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Data.Squads
 {
-    public abstract class BaseSquad : ScriptableObject
+    public abstract class BaseSquadData : ScriptableObject
     {
         [SerializeField]
-        private Vector3 _squadSize;
+        protected Vector3 _squadSize;
         [SerializeField]
-        private int _unitCount;
+        protected int _unitCount;
         [SerializeField]
-        private BaseUnit _unit;
+        protected BaseUnitData _unit;
 
         public abstract Squad GetSquad(World world);
     }
@@ -68,7 +69,7 @@ namespace Game.Data.Squads
                 _units.Remove(item.Key);
                 _world.RemoveEntity(item.Key);
 
-                _unit.FillComponents(newEntity);
+                _unit.FillComponents(newEntity, unitGO);
 
                 _units.Add(newEntity, unitGO);
             }
