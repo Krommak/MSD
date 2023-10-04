@@ -5,6 +5,7 @@ using Game.Start;
 using Scellecs.Morpeh;
 using Game.Components;
 using Game.Scriptables.Installers;
+using Game.Loader;
 
 namespace Game.Systems.Init
 {
@@ -18,11 +19,13 @@ namespace Game.Systems.Init
         [SerializeField]
         private Vector3[] _relativeSquadPositions; 
 
-        public override void OnAwake()
+        public async override void OnAwake()
         {
-            var prefab = Resources.Load<GameObject>("Prefabs/PlayerPrefab");
+            var task = AssetLoader.LoadAsset<GameObject>("Prefabs/PlayerPrefab");
+            await task;
+
             var posTransform = GameStartup.Instance.RuntimeData.GetPosForCreatePlayerBase();
-            var player = Instantiate(prefab);
+            var player = Instantiate(task.Result);
             player.transform.position = posTransform.position;
             player.transform.eulerAngles = posTransform.eulerAngles;
 
