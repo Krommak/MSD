@@ -3,6 +3,7 @@ using Game.Data.Units;
 using Scellecs.Morpeh;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Data.Squads
 {
@@ -14,12 +15,16 @@ namespace Game.Data.Squads
         protected int _unitCount;
         [SerializeField]
         protected BaseUnitData _unit;
+        [SerializeField]
+        protected Image _squadIcon;
 
         public abstract Squad GetSquad(World world);
     }
 
     public abstract class Squad
     {
+        public readonly Image SquadIcon;
+
         private int _unitCount;
         private Unit _unit;
         private Dictionary<Entity, GameObject> _units;
@@ -27,13 +32,15 @@ namespace Game.Data.Squads
         private World _world;
         private KeyValuePair<Entity, GameObject> _squad;
 
-        public Squad(int count, Unit unit, World world, Vector3 squadSize)
+        public Squad(int count, Unit unit, World world, Vector3 squadSize, Image squadIcon)
         {
             _units = new Dictionary<Entity, GameObject>();
             _unitCount = count;
             _unit = unit;
             _squadSize = squadSize;
             _world = world;
+            SquadIcon = squadIcon;
+
             var squadGO = new GameObject(GetType().ToString());
             var squadEntity = world.CreateEntity();
             squadEntity.SetComponent(new SquadTransform()

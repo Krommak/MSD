@@ -110,6 +110,19 @@ namespace Game.Start
         private int actualPosition;
         private Dictionary<World, Squad[]> _squadsByPlayerWorld;
 
+        internal Squad GetSquadByWorldAndIndex(World world, int index)
+        {
+            if(_squadsByPlayerWorld.ContainsKey(world) && _squadsByPlayerWorld.Values.Count >= index)
+            {
+                return _squadsByPlayerWorld[world][index];
+            }
+            else
+            {
+                Debug.LogWarning($"Squad index {index} not found in world {world.GetFriendlyName()}");
+                return null;
+            }
+        }
+
         public RuntimeData(List<Transform> positions)
         {
             _playerPositions = positions;

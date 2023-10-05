@@ -1,6 +1,7 @@
 using Game.Data.Units;
 using Scellecs.Morpeh;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Data.Squads
 {
@@ -9,13 +10,13 @@ namespace Game.Data.Squads
     {
         public override Squad GetSquad(World world)
         {
-            return new InfanterySquad(_unitCount, _unit.GetUnit(), world, _squadSize);
+            return new InfanterySquad(_unitCount, _unit.GetUnit(), world, _squadSize, _squadIcon);
         }
     }
 
     public class InfanterySquad : Squad
     {
-        public InfanterySquad(int count, Unit unit, World world, Vector3 squadSize) : base(count, unit, world, squadSize)
+        public InfanterySquad(int count, Unit unit, World world, Vector3 squadSize, Image squadIcon) : base(count, unit, world, squadSize, squadIcon)
         {
         }
     }
