@@ -16,7 +16,7 @@ namespace Game.UI.Battle
         {
             await base.InitElement(data, thisPlayerWorld, indexInHierarchy);
 
-            var squad = data.GetSquadByWorldAndIndex(World, IndexInHierarhy);
+            var squad = Data.GetSquadByWorldAndIndex(World, IndexInHierarhy);
             _icon.sprite = squad.SquadIcon;
 
             return this;
