@@ -16,7 +16,7 @@ namespace Game.Data.Squads
 
     public class InfanterySquad : Squad
     {
-        public InfanterySquad(int count, Unit unit, World world, Vector3 squadSize, Image squadIcon) : base(count, unit, world, squadSize, squadIcon)
+        public InfanterySquad(int count, Unit unit, World world, Vector3 squadSize, Sprite squadIcon) : base(count, unit, world, squadSize, squadIcon)
         {
         }
     }

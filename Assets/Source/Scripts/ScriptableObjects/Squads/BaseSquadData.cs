@@ -16,14 +16,14 @@ namespace Game.Data.Squads
         [SerializeField]
         protected BaseUnitData _unit;
         [SerializeField]
-        protected Image _squadIcon;
+        protected Sprite _squadIcon;
 
         public abstract Squad GetSquad(World world);
     }
 
     public abstract class Squad
     {
-        public readonly Image SquadIcon;
+        public readonly Sprite SquadIcon;
 
         private int _unitCount;
         private Unit _unit;
@@ -32,7 +32,7 @@ namespace Game.Data.Squads
         private World _world;
         private KeyValuePair<Entity, GameObject> _squad;
 
-        public Squad(int count, Unit unit, World world, Vector3 squadSize, Image squadIcon)
+        public Squad(int count, Unit unit, World world, Vector3 squadSize, Sprite squadIcon)
         {
             _units = new Dictionary<Entity, GameObject>();
             _unitCount = count;
