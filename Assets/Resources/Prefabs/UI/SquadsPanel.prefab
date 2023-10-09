@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1762487752379934174}
   - component: {fileID: 2871017423242236321}
   - component: {fileID: 5282961804737517487}
-  - component: {fileID: 6304260183015441997}
+  - component: {fileID: 7174828802185813811}
   m_Layer: 5
   m_Name: SquadsPanel
   m_TagString: Untagged
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
-    m_Right: 20
+    m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Spacing: {x: 15, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 5
---- !u!114 &6304260183015441997
+--- !u!114 &7174828802185813811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4924351063847012980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f70bffaf87d8943b416e626e15e83f, type: 3}
+  m_Script: {fileID: 11500000, guid: f6fb4e32caa0d234bb6dcc1eed68e20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ChildElements:
@@ -223,6 +223,30 @@ PrefabInstance:
     - target: {fileID: 3653042636224875411, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
       propertyPath: m_Name
       value: SquadIcon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredHeight
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
@@ -341,6 +365,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquadIcon (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredHeight
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
 --- !u!224 &3829439802775189824 stripped
@@ -457,6 +505,30 @@ PrefabInstance:
     - target: {fileID: 3653042636224875411, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
       propertyPath: m_Name
       value: SquadIcon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredHeight
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
@@ -575,6 +647,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquadIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredHeight
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
 --- !u!224 &185361764826330194 stripped
@@ -691,6 +787,30 @@ PrefabInstance:
     - target: {fileID: 3653042636224875411, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
       propertyPath: m_Name
       value: SquadIcon (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_MinHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_FlexibleHeight
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596832197751750627, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}
+      propertyPath: m_PreferredHeight
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cfaa0b9b57812547bbc8a3f4ee33af8, type: 3}

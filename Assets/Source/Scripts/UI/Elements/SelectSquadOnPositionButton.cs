@@ -1,6 +1,5 @@
 using Game.Start;
 using Scellecs.Morpeh;
-using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,11 +22,6 @@ namespace Game.UI.Battle
         public async override Task<UIElement> InitElement(RuntimeData data, World thisPlayerWorld, int indexInHierarchy)
         {
             await base.InitElement(data, thisPlayerWorld, indexInHierarchy);
-
-            foreach (var element in ChildElements)
-            {
-
-            }
 
             return this;
         }

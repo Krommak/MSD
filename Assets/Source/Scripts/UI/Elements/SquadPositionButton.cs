@@ -8,11 +8,13 @@ using UnityEngine.UI;
 namespace Game.UI.Battle
 {
     [RequireComponent(typeof(Button))]
-    public class SquadPositionButton : UIElement
+    public class SquadPositionButton : UIElementWithChild
     {
         [SerializeField]
         private Image _icon;
         private Button _button;
+
+        public UIElement[] ChildElements { get; set; }
 
         private void Awake()
         {
@@ -28,10 +30,12 @@ namespace Game.UI.Battle
             return this;
         }
 
-        private void UpdateIcon(int indexOfElement)
+        private void SelectSquadPosition(int indexOfElement)
         {
             var squad = Data.GetSquadByWorldAndIndex(World, indexOfElement);
             _icon.sprite = squad.SquadIcon;
+
+            // Create ECS entity of set squad on selected position
 
             CloseButtons();
         }
@@ -43,7 +47,7 @@ namespace Game.UI.Battle
                 if (element is SelectSquadOnPositionButton selectButton)
                 {
                     selectButton.gameObject.SetActive(true);
-                    selectButton.SetAction(() => UpdateIcon(Array.IndexOf(ChildElements, element)));
+                    selectButton.SetAction(() => SelectSquadPosition(Array.IndexOf(ChildElements, element)));
                 }
             }
         }
